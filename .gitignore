@@ -1,3 +1,6 @@
 .sites-checkout/
 .agents/
 .codex/
+node_modules/
+dist/
+*.tsbuildinfo

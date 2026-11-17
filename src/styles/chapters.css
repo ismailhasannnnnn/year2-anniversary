@@ -1,0 +1,157 @@
+/* Chapter two: a cozy room, with the portrait above the discovery area. */
+.portrait-room {
+  position: relative;
+  isolation: isolate;
+  width: min(1000px, calc(100% - 32px));
+  min-height: 640px;
+  margin: 0 auto 35px;
+  overflow: hidden;
+  border: 1px solid #c9b89c;
+  background: repeating-linear-gradient(90deg, transparent 0 47px, #acac8f14 48px 49px), linear-gradient(#dddcca 0 69%, #c5aa85 69%);
+}
+
+.room-window {
+  position: absolute;
+  top: 35px;
+  left: 6%;
+  width: 100px;
+  height: 130px;
+  border: 9px solid #eee4cd;
+  background: linear-gradient(120deg, #a6bbb7, #dfd9b8);
+  box-shadow: 0 3px 0 #978468;
+}
+.room-window::before, .room-window::after { content: ''; position: absolute; background: #eee4cd; }
+.room-window::before { left: 45%; width: 6px; height: 100%; }
+.room-window::after { top: 45%; width: 100%; height: 6px; }
+.room-frame { position: absolute; top: 24px; left: 50%; transform: translateX(-50%) rotate(-2deg); padding: 10px 22px; border: 5px solid #a88964; background: #f5ebd5; font-size: 24px; color: #88674c; }
+.portrait-arrangement { position: relative; z-index: 2; width: 67%; margin: 105px auto 0; padding: 20px 10px 6px; border-bottom: 5px solid #a08b6a; border-radius: 10px; background: #efe4cb80; }
+.family-portrait { padding: 8px; }
+.portrait-row { display: flex; justify-content: center; flex-wrap: wrap; gap: clamp(2px, 1vw, 14px); }
+.portrait-row + .portrait-row { margin-top: -5px; }
+.portrait-friend { display: flex; flex-direction: column; align-items: center; width: 12%; min-width: 44px; padding: 2px; border: 1px solid transparent; background: transparent; font-family: inherit; }
+.portrait-friend > span { font-size: clamp(9px, 1vw, 12px); color: #65513e; }
+.friend-drawing { display: block; width: min(100%, 70px); height: auto; object-fit: contain; translate: var(--friend-offset-x, 0%) var(--friend-offset-y, 0%); scale: var(--friend-scale, 1); }
+.worker-object .friend-drawing { width: 100%; height: 100%; object-fit: contain; }
+.friend-missing .friend-drawing { opacity: .1; filter: grayscale(1); }
+.friend-missing { border: 1px dashed #a18c69; border-radius: 45% 45% 8px 8px; }
+button.portrait-friend { cursor: pointer; background: #fff6dc99; }
+button.portrait-friend:hover { border-color: var(--terracotta); }
+.portrait-row:last-child .portrait-friend { width: 18%; }
+.portrait-row:last-child .friend-drawing { width: min(100%, 83px); }
+.room-rug { position: absolute; z-index: -1; width: 80%; height: 160px; left: 10%; bottom: 10px; border: 14px double #ab765d; border-radius: 50%; background: #c99e79; opacity: .55; }
+.cushion-search, .portrait-guide { position: absolute; z-index: 3; padding: 0; border: 0; background: none; cursor: pointer; }
+.cushion-search:disabled, .portrait-guide:disabled { cursor: default; }
+.cushion-search { width: 155px; height: 150px; left: 10%; bottom: 38px; }
+.cushion-search .friend-drawing { position: absolute; width: 95px; height: 100px; left: 28px; top: 0; }
+.room-cushion { position: absolute; inset: 25px 0 10px; border-radius: 30%; background: #a66d5f; border: 6px double #c08c74; transform: rotate(-8deg); transition: transform 650ms cubic-bezier(.2, .8, .2, 1); }
+.cushion-open .room-cushion { transform: translateX(-50px) rotate(-30deg); }
+.cushion-search .object-label { bottom: -10px; left: 50%; transform: translateX(-50%); }
+.curtain-search { position: absolute; right: 9%; bottom: 38px; width: 150px; height: 165px; }
+.party-glow { position: absolute; inset: 5px; border-radius: 50%; background: conic-gradient(#e7ad85, #ac9ab4, #b7c99d, #e7ad85); opacity: .7; filter: blur(12px); }
+.curtain-search > .friend-drawing { position: absolute; top: 25px; left: 27px; width: 95px; height: 95px; }
+.room-curtain { position: absolute; inset: 0; border: 0; border-top: 5px solid #786d51; background: repeating-linear-gradient(90deg, #7e8b70 0 19px, #8f9b7d 20px 39px); border-radius: 0 0 25px 10px; cursor: pointer; transform-origin: right; transition: transform 700ms cubic-bezier(.2, .8, .2, 1); }
+.curtain-open .room-curtain { transform: scaleX(.15); pointer-events: none; }
+.curtain-search .object-label { bottom: -10px; left: 50%; transform: translateX(-50%); cursor: pointer; min-height: 44px; white-space: normal; min-width: 160px; }
+.portrait-guide { left: 43%; bottom: 28px; width: 125px; }
+.portrait-guide > img { display: block; width: 100%; aspect-ratio: 210 / 240; object-fit: contain; }
+.portrait-guide .handwritten { display: block; margin-top: -12px; font-size: 20px; }
+.portrait-guide:not(:disabled):hover { transform: rotate(4deg); }
+.portrait-controls { margin: -35px auto 65px; text-align: center; width: min(700px, calc(100% - 32px)); }
+.puzzle-hint { color: var(--muted); font-size: 13px; line-height: 1.7; max-width: 500px; margin: 15px auto; }
+.camera-button > span { font-size: 26px; }
+.portrait-keepsake { width: min(790px, calc(100% - 36px)); margin: 45px auto 75px; text-align: center; }
+.portrait-photo { position: relative; display: block; width: 100%; padding: 25px 24px 20px; border: 0; background: #fffaf0; color: var(--ink); box-shadow: 0 18px 45px #65543822; transform: rotate(-1.5deg); cursor: zoom-in; }
+.portrait-photo .family-portrait, .portrait-dialog .family-portrait { background: linear-gradient(#d7dac2, #e5d1ae); padding: 24px; }
+.portrait-photo > .handwritten { display: block; margin-top: 15px; font-size: 25px; }
+.portrait-message { margin: 35px auto 25px; color: var(--muted); font: 16px/1.8 'Playfair Display', serif; }
+.portrait-dialog { width: min(1000px, calc(100% - 24px)); border: 1px solid var(--line); background: var(--cream); padding: 18px; }
+.portrait-dialog::backdrop { background: #332b25bb; backdrop-filter: blur(5px); }
+.portrait-dialog > button { display: block; margin: 0 0 20px auto; min-height: 44px; }
+.portrait-dialog .friend-drawing { width: min(100%, clamp(65px, 10vw, 120px)); }
+
+/* Chapter three: warm concert lights become a layered autumn scrapbook. */
+.concert-stage { position: relative; isolation: isolate; width: min(1000px, calc(100% - 32px)); height: 490px; overflow: hidden; margin: 0 auto 35px; background: linear-gradient(#333d43, #5b5650 80%, #343836); border: 1px solid #716957; }
+.concert-stars { position: absolute; inset: 0; opacity: .35; background-image: radial-gradient(#ffebc7 1px, transparent 1px); background-size: 37px 43px; }
+.stage-light { position: absolute; z-index: -1; top: -10%; left: 15%; width: 32%; height: 115%; background: linear-gradient(#ebc07e55, #ebc07e00); clip-path: polygon(45% 0, 55% 0, 100% 100%, 0 100%); transform-origin: top center; }
+.light-rose { left: 38%; background: linear-gradient(#ca8c7855, #ca8c7800); }
+.light-sage { left: 59%; background: linear-gradient(#b8c3a955, #b8c3a900); }
+.concert-platform { position: absolute; bottom: 80px; left: 10%; right: 10%; height: 12px; background: #c39c6a; box-shadow: 0 10px 0 #51473d, 0 20px 0 #6a5947; }
+.stage-mic { position: absolute; left: 48%; bottom: 0; height: 100px; width: 3px; background: #3b3931; }
+.stage-mic::before { content: ''; position: absolute; width: 20px; height: 8px; top: 0; left: -3px; border-radius: 5px; background: #e7d6af; transform: rotate(-20deg); }
+.concert-crowd { position: absolute; display: flex; align-items: end; left: 0; right: 0; bottom: -10px; height: 90px; }
+.concert-crowd i { position: relative; flex: 1; background: #303733; border-radius: 45% 45% 0 0; }
+.concert-crowd i::before { content: ''; position: absolute; width: 21px; height: 23px; top: -12px; left: 22%; border-radius: 50%; background: #303733; }
+.concert-name { position: absolute; top: 40px; left: 0; width: 100%; text-align: center; color: #f0dfbb; font: 28px 'Playfair Display', serif; letter-spacing: .2em; }
+.concert-name > span { display: block; margin-top: 10px; font: italic 14px 'Playfair Display', serif; letter-spacing: .03em; color: #d1c3a9; }
+.concert-tomi { position: absolute; bottom: 60px; left: 19%; width: 155px; }
+.concert-ticket { position: absolute; bottom: 135px; left: 44%; width: 310px; min-height: 170px; display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding: 23px 26px; border: 1px solid #b39870; border-radius: 5px; background: #f0dfb9; box-shadow: 0 15px 24px #191f2444; transform: rotate(3deg); text-align: left; cursor: pointer; }
+.concert-ticket > strong { font: 36px 'Playfair Display', serif; color: #775742; }
+.concert-ticket > span:not(.eyebrow) { font-size: 9px; letter-spacing: .12em; color: #846b50; }
+.concert-ticket .ticket-stub { border-top: 1px dashed #b89d75; padding-top: 10px; width: 100%; }
+.drive-scene { position: relative; overflow: hidden; width: min(1000px, calc(100% - 32px)); margin: 0 auto; border: 10px solid #fffaf0; box-shadow: 0 16px 40px #65543822; }
+.autumn-landscape { display: block; width: 100%; height: auto; min-height: 260px; object-fit: cover; }
+.drive-caption { position: absolute; top: 20px; left: 25px; font-size: 24px; color: #71644b; }
+.drive-progress { display: flex; justify-content: center; flex-wrap: wrap; gap: 25px; background: #fffaf0; padding: 15px 5px 5px; font-size: 10px; color: #9c9383; letter-spacing: .08em; }
+.drive-progress .remembered { color: #836148; }
+.choice-puzzle { width: min(680px, calc(100% - 32px)); margin: 38px auto 65px; text-align: center; }
+.choice-puzzle h2, .concert-passage h2 { font: 600 32px 'Playfair Display', serif; margin: 12px 0 24px; letter-spacing: -.03em; }
+.drive-choices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; }
+.drive-choice { min-height: 120px; display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px; border: 1px solid #d5c6ae; background: #fffaf0; cursor: pointer; transition: transform 200ms, border-color 200ms, background 200ms; }
+.drive-choice:hover { transform: translateY(-4px); border-color: var(--terracotta); background: #f4e8d1; }
+.drive-choice svg { width: 70px; height: 55px; }
+.drive-choice span { font: 14px 'Playfair Display', serif; }
+.choice-feedback { min-height: 24px; margin: 20px 0 12px; color: var(--muted); font-size: 12px; }
+.choice-help { display: flex; justify-content: center; gap: 30px; margin-top: 20px; }
+.drive-finished { margin: 25px auto 65px; text-align: center; padding: 0 16px; }
+.drive-finished p { font-size: 27px; color: #876a4d; }
+.concert-reveal { margin-bottom: 75px; text-align: center; }
+.concert-reveal .concert-stage { height: 300px; }
+.concert-memory-caption { position: absolute; top: 27%; left: 10%; right: 10%; color: #efdcbc; font-size: clamp(25px, 4vw, 37px); }
+.concert-passage { max-width: 570px; min-height: 240px; margin: 30px auto 0; padding: 15px 20px; }
+.concert-passage p { font: 17px/1.9 'Playfair Display', serif; color: var(--muted); }
+.mini-portrait { display: grid; place-items: center; width: 33px; height: 34px; background: #d5d8bf; border: 5px solid #f5e3c3; box-shadow: 0 1px 3px #8f7858; color: #a96750; }
+.mini-ticket { display: grid; place-items: center; width: 36px; height: 24px; border: 1px dashed #b19262; background: #ead3a8; color: #987140; rotate: -8deg; }
+.chapter-complete .letter-instruction { margin: 12px 0 30px; font-size: 16px; line-height: 1.8; }
+.letter-instruction strong { font-weight: 600; color: var(--terracotta); }
+
+@media (max-width: 760px) {
+  .portrait-room { min-height: 610px; }
+  .portrait-arrangement { width: 94%; margin-top: 95px; }
+  .room-window { width: 60px; height: 80px; top: 12px; left: 4%; }
+  .room-frame { font-size: 19px; padding: 8px 12px; white-space: nowrap; }
+  .portrait-row { gap: 2px; }
+  .portrait-row .portrait-friend { min-width: 0; width: 15.5%; }
+  .portrait-row:last-child .portrait-friend { width: 22%; }
+  .friend-drawing { width: min(100%, 65px); }
+  .portrait-row:last-child .friend-drawing { width: min(100%, 85px); }
+  .cushion-search { left: 8%; bottom: 45px; width: 110px; height: 120px; }
+  .cushion-search .friend-drawing { left: 12px; width: 80px; height: 90px; }
+  .curtain-search { right: 7%; width: 110px; height: 140px; bottom: 45px; }
+  .curtain-search > .friend-drawing { left: 10px; width: 80px; }
+  .curtain-search .object-label { min-width: 125px; }
+  .portrait-guide { left: calc(50% - 45px); bottom: 55px; width: 90px; }
+  .portrait-guide .handwritten { font-size: 16px; }
+  .portrait-photo { padding: 12px 8px; }
+  .portrait-photo .family-portrait, .portrait-dialog .family-portrait { padding: 12px 2px; }
+  .portrait-photo > .handwritten { font-size: 20px; }
+  .concert-stage { height: 440px; }
+  .concert-name { font-size: 23px; }
+  .concert-tomi { left: 7%; width: 115px; }
+  .concert-ticket { left: 35%; width: 57%; padding: 18px 16px; bottom: 155px; min-height: 160px; }
+  .concert-ticket > strong { font-size: 29px; }
+  .drive-caption { top: 10px; left: 12px; font-size: 18px; }
+  .drive-progress { gap: 12px; font-size: 9px; }
+  .drive-choice { padding: 10px 4px; }
+  .choice-help { gap: 18px; }
+  .concert-passage { min-height: 285px; }
+}
+
+@media (max-width: 390px) {
+  .portrait-room { min-height: 610px; }
+  .portrait-guide { bottom: 185px; left: calc(50% - 30px); width: 60px; }
+  .cushion-search { left: 8%; }
+  .curtain-search { right: 9%; }
+  .room-frame { left: 58%; }
+  .drive-choices { gap: 7px; }
+  .drive-choice span { font-size: 12px; }
+}
